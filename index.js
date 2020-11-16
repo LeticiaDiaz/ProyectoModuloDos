@@ -49,22 +49,26 @@ app.post("/nuevousuario", function (req, res) {
 });
 
 app.put("/modificarusuario", function (req, res) {
-  let nombre = req.params.nombre;
-  let sexo = req.params.sexo;
-  let edad = parseInt(req.params.edad);
-  let ciudad = req.params.ciudad;
-  let buscando = req.params.buscando;
-  let aficiones = req.params.aficiones;
-  let foto = req.params.foto;
+  const nombre = req.body.nombre;
+  let sexo = req.body.sexo;
+  let edad = parseInt(req.body.edad);
+  let ciudad = req.body.ciudad;
+  let buscando = req.body.buscando;
+  let aficiones = req.body.aficiones;
+  let foto = req.body.foto;
 
-  db.collection("contactos").updateMany(
-    {nombre : nombre},
-    { sexo: sexo },
-    { edad: edad },
-    { ciudad: ciudad },
-    { buscando: buscando },
-    { aficiones: aficiones },
-    { foto: foto },
+  db.collection("contactos").updateOne(
+    { nombre: nombre },
+    {
+      $set: {
+        sexo: sexo,
+        edad: edad,
+        ciudad: ciudad,
+        buscando: buscando,
+        aficiones: aficiones,
+        foto: foto,
+      },
+    },
 
     function (err, datos) {
       if (err !== null) {
@@ -77,15 +81,18 @@ app.put("/modificarusuario", function (req, res) {
 });
 
 app.delete("/eliminarusuario", function (req, res) {
-    let nombre = req.params.nombre;
-  console.log(nombre)
-    db.collection("contactos").deleteOne({ nombre: nombre }, function (err, datos) {
-      if (err !== null) {
-        res.send(err);
-      } else {
-        res.send(datos);
-      }
-    });
+  const nombre = req.body.nombre;
+
+  db.collection("contactos").deleteOne({ nombre: nombre }, function (
+    err,
+    datos
+  ) {
+    if (err !== null) {
+      res.send(err);
+    } else {
+      res.send(datos);
+    }
   });
+});
 
 app.listen(3000);
