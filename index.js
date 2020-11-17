@@ -28,6 +28,34 @@ app.get("/usuarios", function (req, res) {
     });
 });
 
+app.get("/buscar/usuarios", function (req, res) {
+  db.collection("contactos")
+    .find({
+      $or: [
+        {
+          $and: [
+            { edad: { $lte: req.body.edadTop } },
+            { edad: { $gte: req.body.edadDown } },
+          ],
+        },
+        {
+          ciudad: req.body.ciudad
+        },
+        {
+          aficiones: req.body.aficiones
+        },
+
+      ],
+    })
+    .toArray(function (err, datos) {
+      if (err != null) {
+        res.send(err);
+      } else {
+        res.send(datos);
+      }
+    });
+});
+
 app.post("/nuevousuario", function (req, res) {
   let usuario = {
     nombre: req.body.nombre,
