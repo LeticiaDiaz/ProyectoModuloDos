@@ -28,7 +28,7 @@ app.get("/usuarios", function (req, res) {
     });
 });
 
-app.get("/buscar/usuarios", function (req, res) {
+app.put("/buscar/usuarios", function (req, res) {
   db.collection("contactos")
     .find({
       $or: [
@@ -44,7 +44,15 @@ app.get("/buscar/usuarios", function (req, res) {
         {
           aficiones: req.body.aficiones
         },
-
+        /* {
+          $and: [
+            { sexo: "mujer" },
+            { sexo: "hombre" },
+          ],
+        },
+        {
+          sexo: req.body.sexo
+        }, */
       ],
     })
     .toArray(function (err, datos) {

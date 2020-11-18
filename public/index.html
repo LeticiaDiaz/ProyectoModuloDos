@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul id="menu">
-              <li><a class="activa" href="./index.html">Allá voy</a></li>
-              <li><a href="./search.html">Enséñame</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul id="menu">
+          <li><a class="activa" href="./index.html">Allá voy</a></li>
+          <li><a href="./search.html">Enséñame</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div id="div1">
-        <h2>¿Qué hace alguien como tú en un sitio como este?</h2>
-        <p>¡Queremos conocerte mejor! Háblanos un poco de ti, dónde vives, qué te gusta hacer en tu tiempo libre... Cuanto más nos cuentes, ¡más fácil será buscar gente afín a ti!</p>
-        <input type="text" id="registro" placeholder="Nombre" />
-        <input type="text" id="registro" placeholder="Edad" />
-        <input type="text" id="registro" placeholder="Vivo en" />
-        <input type="text" id="registro" placeholder="Estoy buscando" />
-        <input type="text" id="registro" placeholder="Aficiones" />
-        <input type="img" id="registro" placeholder="Foto" />
-        <button onclick="registrar()">Registrarme</button>
-        
-
-
+      <h2>¿Qué hace alguien como tú en un sitio como este?</h2>
+      <p>
+        ¡Queremos conocerte mejor! Háblanos un poco de ti, dónde vives, qué te
+        gusta hacer en tu tiempo libre... Cuanto más nos cuentes, ¡más fácil
+        será buscar gente afín a ti!
+      </p>
+      <input type="text" id="registroNombre" placeholder="Nombre" />
+      <select id="registroSexo">
+        <option disabled selected>Sexo</option>
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+        <option value="NS/NC">NS/NC</option>
+      </select>
+      <input type="text" id="registroEdad" placeholder="Edad" />
+      <select id="registroCiudad">
+        <option disabled selected>Vivo en...</option>
+        <option value="madrid">Madrid</option>
+        <option value="barcelona">Barcelona</option>
+        <option value="sevilla">Sevilla</option>
+      </select>
+      <select id="registroBuscando">
+        <option disabled selected>Estoy buscando...</option>
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+        <option value="ambos">Ambos</option>
+      </select>
+      <select id="registroAficiones">
+        <option disabled selected>Aficiones</option>
+        <option value="deporte">Hacer deporte</option>
+        <option value="peliculas">Ver películas</option>
+        <option value="musica">Escuchar música</option>
+        <option value="Compras">Ir de compras</option>
+        <option value="teatro">Ir al teatro</option>
+        <option value="fiesta">Salir de fiesta</option>
+        <option value="leer">Leer</option>
+        <option value="viajar">Viajar</option>
+        <option value="videojuegos">Jugar a videojuegos</option>
+      </select>
+      <input type="img" id="registroFoto" placeholder="Foto" />
+      <button onclick="registrar()">Registrarme</button>
     </div>
 
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>

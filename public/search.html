@@ -20,11 +20,33 @@
     <div id="div2">
         <h2>¿Qué clase de aventura has venido a buscar?</h2>
         <p>¡Pide por esa boquita! Nosotros te haremos una selección de lo mejorcito que tenemos. </p>
+        <select id="sexo">
+            <option disabled selected>Estoy buscando...</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="NS/NC">Ambos</option>
         <input type="text" id="edadTop" placeholder="Edad máxima" />
         <input type="text" id="edadDown" placeholder="Edad mínima" />
-        <input type="text" id="ciudad" placeholder="Que viva en..." />
-        <input type="text" id="aficiones" placeholder="Que le guste..." />
-        <button onclick="buscar()">Qué hay por ahí</button>  
+        <select id="ciudad">
+            <option disabled selected>Que viva en...</option>
+            <option value="madrid">Madrid</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="sevilla">Sevilla</option>
+          </select>
+        <select id="aficiones">
+            <option disabled selected>Que le guste...</option>
+            <option value="deporte">Hacer deporte</option>
+            <option value="peliculas">Ver películas</option>
+            <option value="musica">Escuchar música</option>
+            <option value="Compras">Ir de compras</option>
+            <option value="teatro">Ir al teatro</option>
+            <option value="fiesta">Salir de fiesta</option>
+            <option value="leer">Leer</option>
+            <option value="viajar">Viajar</option>
+            <option value="videojuegos">Jugar a videojuegos</option>
+          </select>
+        <button onclick="buscar()">¿Qué hay por ahí?</button>  
+           
         
 
 

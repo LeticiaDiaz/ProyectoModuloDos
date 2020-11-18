@@ -1,21 +1,35 @@
-contactos();
+
 
 function registrar() {
-  const usuario = document.getElementById("registro").value;
+  let nombre = document.getElementById("registroNombre").value;
+  let sexo = document.getElementById("registroSexo").value;
+  let edad = document.getElementById("registroEdad").value;
+  let ciudad = document.getElementById("registroCiudad").value;
+  let buscando = document.getElementById("registroBuscando").value;
+  let aficiones = document.getElementById("registroAficiones").value;
+  let foto = document.getElementById("registroFoto").value;
+  
 
   fetch("/nuevousuario", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({}),
+    body: JSON.stringify({
+      nombre: nombre,
+      sexo: sexo,
+      edad: edad,
+      ciudad: ciudad,
+      buscando: buscando,
+      aficiones: aficiones,
+      foto: foto,
+    }),
   })
     .then(function (res) {
       return res.json();
     })
     .then(function (datos) {
       console.log(datos);
-      libros();
     });
 }
 
@@ -24,9 +38,11 @@ function buscar() {
   let edadDown = document.getElementById("edadDown").value
   let ciudad = document.getElementById("ciudad").value
   let aficiones = document.getElementById("aficiones").value
+  let sexo = document.getElementById("sexo ").value
+  
 
   fetch("/buscar/usuarios", {
-    method: "GET",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -59,3 +75,4 @@ function buscar() {
       document.getElementById("div2").innerHTML = contactos;
     });
 }
+
