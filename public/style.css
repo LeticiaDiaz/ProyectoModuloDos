@@ -1,3 +1,39 @@
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  nav ul {
+    list-style-type: none;
+    margin: 0px;
+    overflow: hidden;
+    background-color: rgb(209, 177, 177);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  nav li {
+    float: left;
+  }
+  
+  nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 15px;
+  }
+
+
 .activa {
-    background-color: cornflowerblue;
+    background-color: rgb(211, 153, 153);
+    
 }
+
+nav li a:hover {
+    color: rgb(194, 84, 84) ;
+  }
+
+  /*----------------------------------------------------------------------FIN HEADER-------------------------------------------*/
