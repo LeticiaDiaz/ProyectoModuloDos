@@ -8,6 +8,7 @@ function registrar() {
   let buscando = document.getElementById("registroBuscando").value;
   let aficiones = document.getElementById("registroAficiones").value;
   let foto = document.getElementById("registroFoto").value;
+  let email = document.getElementById("registroEmail").value;
   
 
   fetch("/nuevousuario", {
@@ -23,6 +24,7 @@ function registrar() {
       buscando: buscando,
       aficiones: aficiones,
       foto: foto,
+      email: email,
     }),
   })
     .then(function (res) {
@@ -34,11 +36,11 @@ function registrar() {
 }
 
 function buscar() {
-  let edadTop = document.getElementById("edadTop").value
-  let edadDown = document.getElementById("edadDown").value
+  let edadTop = parseInt(document.getElementById("edadTop").value)
+  let edadDown = parseInt(document.getElementById("edadDown").value)
   let ciudad = document.getElementById("ciudad").value
   let aficiones = document.getElementById("aficiones").value
-  let sexo = document.getElementById("sexo ").value
+  let sexo = document.getElementById("sexo").value
   
 
   fetch("/buscar/usuarios", {
@@ -51,12 +53,14 @@ function buscar() {
       edadDown: edadDown,
       ciudad: ciudad,
       aficiones: aficiones,
+      sexo: sexo,
     }),
   })
     .then(function (res) {
       return res.json();
     })
     .then(function (datos) {
+      console.log(datos)
       let contactos = "";
       for (let i = 0; i < datos.length; i++) {
         contactos += `
@@ -68,6 +72,7 @@ function buscar() {
                     <p>Buscando: ${datos[i].buscando}</p>
                     <p>Aficiones: ${datos[i].aficiones}</p>
                     <img src="${datos[i].foto}"/>
+                    <button onclick="contactar('${datos[i].nombre}')">Contactar</button>
                 </div>    
             `;
       }
@@ -76,3 +81,30 @@ function buscar() {
     });
 }
 
+function contactar(nombre){
+  fetch(`/contactar/${nombre}`)
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (datos) {
+    console.log(datos)
+    document.getElementById("contactoEnsenyar").innerHTML = `<a href="mailto://${datos[0].email}">${datos[0].email}</a>`
+  })
+}
+
+function eliminar(){
+let nombre = document.getElementById("borrarNombre").value;
+fetch("/eliminarusuario", {
+  method: "DELETE",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({nombre: nombre}),
+})
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (datos) {
+    document.getElementById("div3").innerHTML = `<h1>Usuario borrado</h1>`;
+  });
+}

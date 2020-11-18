@@ -28,42 +28,6 @@ app.get("/usuarios", function (req, res) {
     });
 });
 
-app.put("/buscar/usuarios", function (req, res) {
-  db.collection("contactos")
-    .find({
-      $or: [
-        {
-          $and: [
-            { edad: { $lte: req.body.edadTop } },
-            { edad: { $gte: req.body.edadDown } },
-          ],
-        },
-        {
-          ciudad: req.body.ciudad
-        },
-        {
-          aficiones: req.body.aficiones
-        },
-        /* {
-          $and: [
-            { sexo: "mujer" },
-            { sexo: "hombre" },
-          ],
-        },
-        {
-          sexo: req.body.sexo
-        }, */
-      ],
-    })
-    .toArray(function (err, datos) {
-      if (err != null) {
-        res.send(err);
-      } else {
-        res.send(datos);
-      }
-    });
-});
-
 app.post("/nuevousuario", function (req, res) {
   let usuario = {
     nombre: req.body.nombre,
@@ -73,6 +37,7 @@ app.post("/nuevousuario", function (req, res) {
     buscando: req.body.buscando,
     aficiones: req.body.aficiones,
     foto: req.body.foto,
+    email: req.body.email,
   };
 
   db.collection("contactos").insertOne(usuario, function (err, datos) {
@@ -92,6 +57,7 @@ app.put("/modificarusuario", function (req, res) {
   let buscando = req.body.buscando;
   let aficiones = req.body.aficiones;
   let foto = req.body.foto;
+  let email = req.body.email;
 
   db.collection("contactos").updateOne(
     { nombre: nombre },
@@ -103,6 +69,7 @@ app.put("/modificarusuario", function (req, res) {
         buscando: buscando,
         aficiones: aficiones,
         foto: foto,
+        email: email
       },
     },
 
@@ -115,6 +82,52 @@ app.put("/modificarusuario", function (req, res) {
     }
   );
 });
+
+app.put("/buscar/usuarios", function (req, res) {
+  console.log(req.body)
+  db.collection("contactos")
+    .find({
+      $and: [
+        {
+          $and: [
+            { edad: { $lte: req.body.edadTop } },
+            { edad: { $gte: req.body.edadDown } },
+          ],
+        },
+        {
+          ciudad: req.body.ciudad
+        },
+        {
+          aficiones: req.body.aficiones
+        },
+        {
+          sexo: req.body.sexo
+        },
+      ],
+    })
+    .toArray(function (err, datos) {
+      if (err != null) {
+        res.send(err);
+      } else {
+        res.send(datos);
+      }
+    });
+});
+
+app.get("/contactar/:nombre", function(req, res){
+  let nombre = req.params.nombre
+  db.collection("contactos")
+    .find({nombre: nombre})
+    .toArray(function (err, datos) {
+      if (err != null) {
+        res.send(err);
+      } else {
+        res.send(datos);
+      }
+    });
+})
+
+app.listen(3000);
 
 app.delete("/eliminarusuario", function (req, res) {
   const nombre = req.body.nombre;
@@ -131,4 +144,4 @@ app.delete("/eliminarusuario", function (req, res) {
   });
 });
 
-app.listen(3000);
+
