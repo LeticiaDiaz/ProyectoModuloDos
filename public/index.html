@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" type="text/css" />
-    <title>Document</title>
+    <title>Encuentra tu media langosta</title>
   </head>
-  <body>
+  <body class="portada">
     <header>
       <nav>
         <ul id="menu">
@@ -17,47 +17,49 @@
       </nav>
     </header>
 
-    <div id="div1">
-      <h2>¿Qué hace alguien como tú en un sitio como este?</h2>
-      <p>
-        ¡Queremos conocerte mejor! Háblanos un poco de ti, dónde vives, qué te
-        gusta hacer en tu tiempo libre... Cuanto más nos cuentes, ¡más fácil
-        será buscar gente afín a ti!
-      </p>
-      <input type="text" id="registroNombre" placeholder="Nombre" />
-      <select id="registroSexo">
-        <option disabled selected>Sexo</option>
-        <option value="hombre">Hombre</option>
-        <option value="mujer">Mujer</option>
-      </select>
-      <input type="text" id="registroEdad" placeholder="Edad" />
-      <select id="registroCiudad">
-        <option disabled selected>Vivo en...</option>
-        <option value="madrid">Madrid</option>
-        <option value="barcelona">Barcelona</option>
-        <option value="sevilla">Sevilla</option>
-      </select>
-      <select id="registroBuscando">
-        <option disabled selected>Estoy buscando...</option>
-        <option value="hombre">Hombre</option>
-        <option value="mujer">Mujer</option>
-      </select>
-      <select id="registroAficiones">
-        <option disabled selected>Aficiones</option>
-        <option value="deporte">Hacer deporte</option>
-        <option value="peliculas">Ver películas</option>
-        <option value="musica">Escuchar música</option>
-        <option value="Compras">Ir de compras</option>
-        <option value="teatro">Ir al teatro</option>
-        <option value="fiesta">Salir de fiesta</option>
-        <option value="leer">Leer</option>
-        <option value="viajar">Viajar</option>
-        <option value="videojuegos">Jugar a videojuegos</option>
-      </select>
-      <input type="img" id="registroFoto" placeholder="Foto" />
-      <input type="text" id="registroEmail" placeholder="Email" />
-      <button onclick="registrar()">Registrarme</button>
-    </div>
+    <main>
+      <div id="div1">
+        <h2><strong>¿Qué hace alguien como tú en un sitio como este?</strong></h2>
+        <p>¡Queremos conocerte mejor! Háblanos un poco de ti, dónde vives, qué te
+          gusta hacer en tu tiempo libre... Cuanto más nos cuentes, ¡más fácil
+          será buscar gente afín a ti!</p>
+        <input type="text" id="registroNombre" placeholder="Nombre" />
+        <select id="registroSexo">
+          <option disabled selected>Sexo</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+        </select>
+        <input type="text" id="registroEdad" placeholder="Edad" />
+        <select id="registroCiudad">
+          <option disabled selected>Vivo en...</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Barcelona">Barcelona</option>
+          <option value="Sevilla">Sevilla</option>
+        </select>
+        <select id="registroBuscando">
+          <option disabled selected>Estoy buscando...</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+        </select>
+        <select id="registroAficiones">
+          <option disabled selected>Aficiones</option>
+          <option value="Deporte">Hacer deporte</option>
+          <option value="Peliculas">Ir al cine</option>
+          <option value="Musica">Escuchar música</option>
+          <option value="Compras">Ir de compras</option>
+          <option value="Teatro">Ir al teatro</option>
+          <option value="Fiesta">Salir de fiesta</option>
+          <option value="Leer">Leer</option>
+          <option value="Viajar">Viajar</option>
+          <option value="Videojuegos">Jugar a videojuegos</option>
+        </select>
+        <input type="img" id="registroFoto" placeholder="Foto" />
+        <input type="text" id="registroEmail" placeholder="Email" />
+        <button onclick="registrar()">Registrarme</button>
+      </div>
+    </main>
+
+    <footer><p>Match.com</p></footer>
 
     <script src="./index.js"></script>
   </body>

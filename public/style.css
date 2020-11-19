@@ -1,39 +1,103 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ /*  color: white; */
+}
 
 header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
 
-  nav ul {
-    list-style-type: none;
-    margin: 0px;
-    overflow: hidden;
-    background-color: rgb(209, 177, 177);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  nav li {
-    float: left;
-  }
-  
-  nav li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    padding: 15px;
-  }
+nav ul {
+  list-style-type: none;
+  margin: 0px;
+  overflow: hidden;
+  background-color: rgb(209, 177, 177);
+}
 
+nav li {
+  float: left;
+}
+
+nav li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 15px;
+}
 
 .activa {
-    background-color: rgb(211, 153, 153);
-    
+  background-color: rgb(211, 153, 153);
 }
 
 nav li a:hover {
-    color: rgb(194, 84, 84) ;
-  }
+  color: rgb(194, 84, 84);
+}
 
-  /*----------------------------------------------------------------------FIN HEADER-------------------------------------------*/
+main {
+  margin: 60px 10px 60px 10px;
+}
+
+#div1 {
+  color: white;
+}
+
+#div2 {
+  color: white;
+}
+
+#div3 {
+  color: white;
+}
+
+
+footer {
+  text-align: right;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(209, 177, 177);
+}
+
+footer p {
+  margin: 10px;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
+.portada {
+  background: url("./img/people-2597454_960_720.webp") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portadaDos {
+  background: url("./img/love-1731755__340.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+input {
+  color: black;
+}
+
+/* .contacto {
+  background-color: lightgrey;
+  border: 2px grey solid; 
+  max-width: 40%;
+  margin: 20px;
+  padding: 20px;
+} */
+.contacto img {
+  max-width: 300px;
+}

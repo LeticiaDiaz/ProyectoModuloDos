@@ -64,7 +64,7 @@ function buscar() {
       let contactos = "";
       for (let i = 0; i < datos.length; i++) {
         contactos += `
-                <div>
+                <div class="contacto">
                     <h3>Nombre: ${datos[i].nombre}</h3>
                     <p>Sexo: ${datos[i].sexo}</p>
                     <p>Edad: ${datos[i].edad}</p>
