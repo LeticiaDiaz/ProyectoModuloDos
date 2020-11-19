@@ -69,7 +69,7 @@ app.put("/modificarusuario", function (req, res) {
         buscando: buscando,
         aficiones: aficiones,
         foto: foto,
-        email: email
+        email: email,
       },
     },
 
@@ -84,7 +84,7 @@ app.put("/modificarusuario", function (req, res) {
 });
 
 app.put("/buscar/usuarios", function (req, res) {
-  console.log(req.body)
+  console.log(req.body);
   db.collection("contactos")
     .find({
       $and: [
@@ -95,13 +95,13 @@ app.put("/buscar/usuarios", function (req, res) {
           ],
         },
         {
-          ciudad: req.body.ciudad
+          ciudad: req.body.ciudad,
         },
         {
-          aficiones: req.body.aficiones
+          aficiones: req.body.aficiones,
         },
         {
-          sexo: req.body.sexo
+          sexo: req.body.sexo,
         },
       ],
     })
@@ -114,10 +114,10 @@ app.put("/buscar/usuarios", function (req, res) {
     });
 });
 
-app.get("/contactar/:nombre", function(req, res){
-  let nombre = req.params.nombre
+app.get("/contactar/:nombre", function (req, res) {
+  let nombre = req.params.nombre;
   db.collection("contactos")
-    .find({nombre: nombre})
+    .find({ nombre: nombre })
     .toArray(function (err, datos) {
       if (err != null) {
         res.send(err);
@@ -125,7 +125,7 @@ app.get("/contactar/:nombre", function(req, res){
         res.send(datos);
       }
     });
-})
+});
 
 app.listen(3000);
 
@@ -143,5 +143,3 @@ app.delete("/eliminarusuario", function (req, res) {
     }
   });
 });
-
-

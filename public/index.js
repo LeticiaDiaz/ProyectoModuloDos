@@ -1,5 +1,3 @@
-
-
 function registrar() {
   let nombre = document.getElementById("registroNombre").value;
   let sexo = document.getElementById("registroSexo").value;
@@ -9,7 +7,6 @@ function registrar() {
   let aficiones = document.getElementById("registroAficiones").value;
   let foto = document.getElementById("registroFoto").value;
   let email = document.getElementById("registroEmail").value;
-  
 
   fetch("/nuevousuario", {
     method: "POST",
@@ -31,17 +28,18 @@ function registrar() {
       return res.json();
     })
     .then(function (datos) {
-      console.log(datos);
+      document.getElementById(
+        "div1"
+      ).innerHTML = `<h2>Te has registrado correctamente</h2>`;
     });
 }
 
 function buscar() {
-  let edadTop = parseInt(document.getElementById("edadTop").value)
-  let edadDown = parseInt(document.getElementById("edadDown").value)
-  let ciudad = document.getElementById("ciudad").value
-  let aficiones = document.getElementById("aficiones").value
-  let sexo = document.getElementById("sexo").value
-  
+  let edadTop = parseInt(document.getElementById("edadTop").value);
+  let edadDown = parseInt(document.getElementById("edadDown").value);
+  let ciudad = document.getElementById("ciudad").value;
+  let aficiones = document.getElementById("aficiones").value;
+  let sexo = document.getElementById("sexo").value;
 
   fetch("/buscar/usuarios", {
     method: "PUT",
@@ -60,7 +58,7 @@ function buscar() {
       return res.json();
     })
     .then(function (datos) {
-      console.log(datos)
+      console.log(datos);
       let contactos = "";
       for (let i = 0; i < datos.length; i++) {
         contactos += `
@@ -73,6 +71,7 @@ function buscar() {
                     <p>Aficiones: ${datos[i].aficiones}</p>
                     <img src="${datos[i].foto}"/>
                     <button onclick="contactar('${datos[i].nombre}')">Contactar</button>
+                    <div id="contactoEnsenyar${datos[i].nombre}"></div>
                 </div>    
             `;
       }
@@ -81,30 +80,34 @@ function buscar() {
     });
 }
 
-function contactar(nombre){
+function contactar(nombre) {
   fetch(`/contactar/${nombre}`)
-  .then(function (res) {
-    return res.json();
-  })
-  .then(function (datos) {
-    console.log(datos)
-    document.getElementById("contactoEnsenyar").innerHTML = `<a href="mailto://${datos[0].email}">${datos[0].email}</a>`
-  })
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (datos) {
+      let chapuza = `contactoEnsenyar${nombre}`;
+      console.log(chapuza);
+      console.log(datos);
+      document.getElementById(
+        chapuza
+      ).innerHTML = `<a href="mailto://${datos[0].email}">${datos[0].email}</a>`;
+    });
 }
 
-function eliminar(){
-let nombre = document.getElementById("borrarNombre").value;
-fetch("/eliminarusuario", {
-  method: "DELETE",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({nombre: nombre}),
-})
-  .then(function (res) {
-    return res.json();
+function eliminar() {
+  let nombre = document.getElementById("borrarNombre").value;
+  fetch("/eliminarusuario", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ nombre: nombre }),
   })
-  .then(function (datos) {
-    document.getElementById("div3").innerHTML = `<h1>Usuario borrado</h1>`;
-  });
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (datos) {
+      document.getElementById("div3").innerHTML = `<h2>Usuario borrado</h2>`;
+    });
 }
